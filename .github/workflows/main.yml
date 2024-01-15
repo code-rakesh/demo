@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          repository: private/repository
+          repository: demo
           ref: main
           token: ${{ secrets.TOKEN }}
 

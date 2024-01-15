@@ -1,9 +1,20 @@
-name: demonstration
-on: push
-jobs: 
-    my-job:
-        runs-on: self-hosted
-        steps:
-            - name: my-step
-              run: mkdir sample
-            
+name: Deploy to Shared Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: private/repository
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to Shared Hosting
+        run: ./deploy.sh
